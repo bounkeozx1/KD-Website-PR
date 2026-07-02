@@ -172,7 +172,7 @@
                     <span data-lang-lo class="lang-hidden">ເຊື່ອມຕໍ່ແຮງງານລາວກັບໂອກາດວຽກເຮັດງານທຳທີ່ມີຄຸນນະພາບທົ່ວປະເທດລາວ</span>
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="tel:02059991936" class="w-full sm:w-auto bg-white text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg flex items-center justify-center space-x-2">
+                    <a href="tel:+8562059991936" data-phone-link data-phone-display="020 59 991 936" class="w-full sm:w-auto bg-white text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg flex items-center justify-center space-x-2">
                         <i class="fas fa-phone"></i>
                         <span data-lang-en>Call Now</span>
                         <span data-lang-lo class="lang-hidden">ໂທຕອນນີ້</span>
@@ -419,7 +419,7 @@
                                 <span data-lang-lo class="lang-hidden">ຕິດຕໍ່ຫາພວກເຮົາ</span>
                             </h4>
                             <div class="space-y-4">
-                                <a href="https://maps.google.com/?q=XJMQ+PG3,+Kamphengmeuang+Rd,+Vientiane" target="_blank" class="flex items-start space-x-4 group">
+                                <a href="https://www.google.com/maps/search/?api=1&query=XJMQ%2BPG3%2C%20Kamphengmeuang%20Rd%2C%20Vientiane%2C%20Laos" target="_blank" rel="noopener noreferrer" class="flex items-start space-x-4 group">
                                     <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-green-200 transition">
                                         <i class="fas fa-map-marker-alt text-green-600"></i>
                                     </div>
@@ -431,7 +431,7 @@
                                         <p class="text-gray-600">XJMQ+PG3, Kamphengmeuang Rd, Vientiane, Laos</p>
                                     </div>
                                 </a>
-                                <a href="tel:02059991936" class="flex items-start space-x-4 group">
+                                <a href="tel:+8562059991936" data-phone-link data-phone-display="020 59 991 936" class="flex items-start space-x-4 group">
                                     <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-green-200 transition">
                                         <i class="fas fa-phone text-green-600"></i>
                                     </div>
@@ -478,24 +478,36 @@
                                 <span data-lang-en>WhatsApp</span>
                                 <span data-lang-lo class="lang-hidden">ວອດແອັບ</span>
                             </a>
-                            <a href="tel:02059991936" class="flex-1 bg-white border-2 border-green-600 text-green-600 px-6 py-4 rounded-lg font-semibold text-center hover:bg-green-50 transition flex items-center justify-center space-x-2">
+                            <a href="tel:+8562059991936" data-phone-link data-phone-display="020 59 991 936" class="flex-1 bg-white border-2 border-green-600 text-green-600 px-6 py-4 rounded-lg font-semibold text-center hover:bg-green-50 transition flex items-center justify-center space-x-2">
                                 <i class="fas fa-phone"></i>
                                 <span data-lang-en>Call</span>
                                 <span data-lang-lo class="lang-hidden">ໂທ</span>
                             </a>
                         </div>
                     </div>
-                    <div class="bg-white p-2 rounded-xl shadow-md overflow-hidden h-96 lg:h-auto">
+                    <div class="bg-white p-2 rounded-xl shadow-md overflow-hidden h-96 lg:h-auto flex flex-col">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3754.8!2d102.6!3d17.96!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDU3JzM2LjAiTiAxMDLCsDM2JzAwLjAiRQ!5e0!3m2!1sen!2sla!4v1234567890!5m2!1sen!2sla&q=XJMQ+PG3,+Kamphengmeuang+Rd,+Vientiane" 
                             width="100%" 
                             height="100%" 
-                            style="border:0; min-height: 400px;" 
+                            style="border:0;" 
                             allowfullscreen="" 
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade"
-                            class="rounded-lg">
+                            class="rounded-lg flex-1 min-h-0">
                         </iframe>
+                        <div class="grid grid-cols-2 gap-2 pt-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=XJMQ%2BPG3%2C%20Kamphengmeuang%20Rd%2C%20Vientiane%2C%20Laos" target="_blank" rel="noopener noreferrer" class="bg-green-600 text-white px-3 py-3 rounded-lg font-semibold text-center hover:bg-green-700 transition flex items-center justify-center space-x-2">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-lang-en>Open Map</span>
+                                <span data-lang-lo class="lang-hidden">ເປີດແຜນທີ່</span>
+                            </a>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=XJMQ%2BPG3%2C%20Kamphengmeuang%20Rd%2C%20Vientiane%2C%20Laos" target="_blank" rel="noopener noreferrer" class="bg-white border-2 border-green-600 text-green-600 px-3 py-3 rounded-lg font-semibold text-center hover:bg-green-50 transition flex items-center justify-center space-x-2">
+                                <i class="fas fa-route"></i>
+                                <span data-lang-en>Directions</span>
+                                <span data-lang-lo class="lang-hidden">ເສັ້ນທາງ</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -538,6 +550,7 @@
     <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-green-600 text-white rounded-full shadow-lg hover:bg-green-700 transition opacity-0 pointer-events-none">
         <i class="fas fa-arrow-up"></i>
     </button>
+    <div id="action-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-4 py-3 rounded-lg shadow-xl opacity-0 pointer-events-none transition text-sm font-medium z-50"></div>
 
     <script>
         // Language Toggle
@@ -602,6 +615,52 @@
         
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Phone links still open dialer on supported devices; desktop browsers get clear feedback.
+        const actionToast = document.getElementById('action-toast');
+        let toastTimer;
+
+        function showActionToast(message) {
+            if (!actionToast) return;
+            actionToast.textContent = message;
+            actionToast.classList.remove('opacity-0', 'pointer-events-none');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                actionToast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2600);
+        }
+
+        function copyTextFallback(text) {
+            const input = document.createElement('textarea');
+            input.value = text;
+            input.setAttribute('readonly', '');
+            input.style.position = 'fixed';
+            input.style.opacity = '0';
+            document.body.appendChild(input);
+            input.select();
+            try {
+                document.execCommand('copy');
+            } catch (error) {
+                // The dial link still works even when the browser blocks clipboard access.
+            }
+            document.body.removeChild(input);
+        }
+
+        document.querySelectorAll('[data-phone-link]').forEach(link => {
+            link.addEventListener('click', () => {
+                const phone = link.getAttribute('data-phone-display') || '020 59 991 936';
+
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(phone).catch(() => copyTextFallback(phone));
+                } else {
+                    copyTextFallback(phone);
+                }
+
+                showActionToast(currentLang === 'lo'
+                    ? `ກຳລັງເປີດແອັບໂທ: ${phone}`
+                    : `Opening phone app: ${phone}`);
+            });
         });
 
         // Smooth scroll with offset for sticky header
