@@ -67,4 +67,41 @@
         .flag-card:hover {
             transform: translateY(-6px);
         }
+        .hex-badge {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hex-badge img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        /* Header diagonal style */
+        .header-diagonal {
+            background-color: var(--dark-green);
+        }
+        .header-logo-diagonal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 180px;
+            background: #ffffff;
+            clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 100%, 0 100%);
+            z-index: 0;
+        }
+        @media (min-width: 640px) {
+            .header-logo-diagonal {
+                width: 230px;
+                clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 100%, 0 100%);
+            }
+        }
+        .nav-link::after {
+            background-color: #ffffff;
+        }
 
