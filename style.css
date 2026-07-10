@@ -67,19 +67,6 @@
         .flag-card:hover {
             transform: translateY(-6px);
         }
-        .hex-badge {
-            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-            background: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .hex-badge img {
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
-        }
 
         /* Header diagonal style */
         .header-diagonal {
@@ -103,6 +90,58 @@
         }
         .nav-link::after {
             background-color: #ffffff;
+        }
+
+        .photo-marquee-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.18;
+            padding: 0;
+        }
+        .photo-marquee-bg .photo-marquee-track {
+            height: 100%;
+            align-items: center;
+        }
+        .photo-marquee-bg .photo-marquee-track img {
+            height: 90%;
+            width: auto;
+            aspect-ratio: 1 / 1;
+        }
+        .photo-marquee-wrap {
+            width: 100%;
+            overflow: hidden;
+            background: #f0fdf4;
+            padding: 10px 0;
+        }
+        .photo-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: photo-marquee-scroll 35s linear infinite;
+        }
+        .photo-marquee-wrap:hover .photo-marquee-track {
+            animation-play-state: paused;
+        }
+        .photo-marquee-track img {
+            height: 180px;
+            width: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 0 6px;
+            box-shadow: 0 4px 10px -2px rgb(0 0 0 / 0.15);
+        }
+        @keyframes photo-marquee-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        @media (min-width: 640px) {
+            .photo-marquee-track img {
+                height: 220px;
+                width: 220px;
+            }
         }
         
 
