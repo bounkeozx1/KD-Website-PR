@@ -1,0 +1,41 @@
+# Publish to Cloudflare Pages on every push to main.
+#
+# GitHub Actions rather than Pages' own Git integration: this project was created
+# as Direct Upload and already serves kdemployment.com, and a Pages project cannot
+# be converted from Direct Upload to Git-connected — taking that route would mean
+# a new project and moving the live domains onto it a second time.
+#
+# One-time setup (both in the repo's Settings > Secrets and variables > Actions):
+#   CLOUDFLARE_API_TOKEN   dash.cloudflare.com > My Profile > API Tokens >
+#                          Create Token > "Edit Cloudflare Workers" template, or a
+#                          custom token with just Account > Cloudflare Pages > Edit
+#   CLOUDFLARE_ACCOUNT_ID  the id in the dashboard URL
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:        # lets you re-deploy by hand from the Actions tab
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      # Publish only what the site serves. Deploying the repo root would push
+      # README.md — and anything else added later — onto the public site.
+      - name: Stage the public files
+        run: |
+          mkdir -p dist
+          cp index.html style.css script.js kd-logo.png _headers dist/
+          ls -la dist
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=kd-website-pr --branch=main
