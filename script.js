@@ -30,6 +30,13 @@
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
             const icon = mobileMenuBtn.querySelector('i');
@@ -39,12 +46,15 @@
 
         // Close mobile menu on link click
         document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close mobile menu when tapping outside it. The button has its own
+        // handler above, so ignore taps on it here or the two would cancel out.
+        document.addEventListener('click', event => {
+            if (mobileMenu.classList.contains('hidden')) return;
+            if (mobileMenu.contains(event.target) || mobileMenuBtn.contains(event.target)) return;
+            closeMobileMenu();
         });
 
         // FAQ Accordion
