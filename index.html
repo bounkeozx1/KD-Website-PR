@@ -19,10 +19,12 @@
     <!-- No overflow-hidden: it would clip the absolutely positioned mobile menu.
          The diagonal below gets its shape from clip-path, not from clipping here. -->
     <header class="relative shadow-md sticky top-0 z-50 header-diagonal">
-        <div class="header-logo-diagonal"></div>
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center relative z-10">
+                    <!-- The white diagonal lives inside this wrapper so it follows the logo,
+                         which the centered `container` shifts right on wide screens. -->
+                    <div class="header-logo-diagonal"></div>
                     <img src="kd-logo.png" alt="KD Employment Sole Co.,LTD" class="h-12 sm:h-14 w-auto object-contain">
                 </div>
 

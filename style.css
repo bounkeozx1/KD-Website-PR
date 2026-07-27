@@ -72,19 +72,23 @@
         .header-diagonal {
             background-color: var(--dark-green);
         }
+        /* Anchored to the logo wrapper, not to the viewport, so the logo stays locked
+           on the white shape however wide the window gets (the nav is a centered
+           max-width container, so the logo moves right on large screens).
+           top/bottom -1rem match the py-4 on the header row: keep them in sync. */
         .header-logo-diagonal {
             position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 180px;
+            top: -1rem;
+            bottom: -1rem;
+            left: -100vw; /* bleed off the left edge of the viewport at any width */
+            right: -78px; /* room past the logo for the slant */
             background: #ffffff;
             clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 100%, 0 100%);
-            z-index: 0;
+            z-index: -1;
         }
         @media (min-width: 640px) {
             .header-logo-diagonal {
-                width: 230px;
+                right: -106px;
                 clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 100%, 0 100%);
             }
         }
