@@ -9,7 +9,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Lao:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- ?v= is a cache buster: Cloudflare serves style.css with max-age=14400 while the HTML
+         is uncached, so without it a returning visitor pairs new HTML with up-to-4-hour-old
+         CSS. Bump this whenever style.css or script.js changes in a way the markup depends on. -->
+    <link rel="stylesheet" href="style.css?v=2026-07-27">
 </head>
 <body class="bg-white text-gray-800">
     <!-- Preload Logo for JS if needed -->
@@ -25,7 +28,9 @@
                     <!-- The white diagonal lives inside this wrapper so it follows the logo,
                          which the centered `container` shifts right on wide screens. -->
                     <div class="header-logo-diagonal"></div>
-                    <img src="kd-logo.png" alt="KD Employment Sole Co.,LTD" class="h-12 sm:h-14 w-auto object-contain">
+                    <!-- relative z-10 keeps the logo above the diagonal no matter which
+                         version of style.css a browser has cached. -->
+                    <img src="kd-logo.png" alt="KD Employment Sole Co.,LTD" class="relative z-10 h-12 sm:h-14 w-auto object-contain">
                 </div>
 
                 <!-- Desktop Navigation -->
@@ -731,9 +736,13 @@
                         </div>
                     </div>
 <div class="bg-white p-2 rounded-xl shadow-md overflow-hidden h-96 flex flex-col">
-                        <!-- Use Google Maps Embed API URL format for reliable embedding -->
+                        <!-- Drops a pin on the office. This is the URL that
+                             maps.google.com/maps?q=17.9842974,102.6386739&z=17&output=embed
+                             redirects to — using it directly keeps the frame on one host, so a
+                             cross-host redirect can never trip the frame-src rule in _headers.
+                             The pb payload is: !2m1!1s<lat>,<lng> and !6i<zoom>. -->
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.1!2d102.6387!3d17.9843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31240b7c8c7d7d7d%3A0x123456789abcdef!2sKD%20Employment%20Sole%20Co.%2CLTD!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                            src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s17.9842974,102.6386739!6i17"
                             width="100%" 
                             height="100%" 
                             style="border:0;" 
@@ -804,7 +813,7 @@
     </button>
     <div id="action-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-4 py-3 rounded-lg shadow-xl opacity-0 pointer-events-none transition text-sm font-medium z-50"></div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2026-07-27"></script>
 </body>
 </html>
 
