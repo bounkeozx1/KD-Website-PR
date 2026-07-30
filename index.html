@@ -12,7 +12,7 @@
     <!-- ?v= is a cache buster: Cloudflare serves style.css with max-age=14400 while the HTML
          is uncached, so without it a returning visitor pairs new HTML with up-to-4-hour-old
          CSS. Bump this whenever style.css or script.js changes in a way the markup depends on. -->
-    <link rel="stylesheet" href="style.css?v=2026-07-27">
+    <link rel="stylesheet" href="style.css?v=2026-07-30">
 </head>
 <body class="bg-white text-gray-800">
     <!-- Preload Logo for JS if needed -->
@@ -68,11 +68,36 @@
                 </div>
 
                 <div class="flex items-center space-x-3">
-                    <!-- Language Toggle -->
-                    <button id="lang-toggle" class="px-3 py-2 rounded-lg bg-green-50 text-green-700 hover:bg-green-100 transition font-medium text-sm">
-                        <i class="fas fa-language mr-1"></i>
-                        <span id="lang-text">ລາວ</span>
-                    </button>
+                    <!-- Language Dropdown: the visitor picks a language outright instead of
+                         cycling through all three. The button shows the language in use. -->
+                    <div id="lang-dropdown" class="relative">
+                        <button id="lang-toggle" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language"
+                                class="flex items-center gap-2 px-3 py-2 rounded-lg bg-green-50 text-green-700 hover:bg-green-100 transition font-medium text-sm">
+                            <i class="fas fa-language"></i>
+                            <span id="lang-text">EN</span>
+                            <i id="lang-caret" class="fas fa-chevron-down text-xs"></i>
+                        </button>
+                        <ul id="lang-menu" role="listbox" aria-label="Language" class="hidden absolute right-0 top-full mt-2 w-44 bg-white rounded-xl shadow-lg py-2 overflow-hidden">
+                            <li>
+                                <button type="button" role="option" aria-selected="true" data-lang-option="en" class="lang-option">
+                                    <span>English</span>
+                                    <i class="fas fa-check lang-check text-green-600 text-xs"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" role="option" aria-selected="false" data-lang-option="lo" class="lang-option">
+                                    <span class="lao-font">ລາວ</span>
+                                    <i class="fas fa-check lang-check text-green-600 text-xs"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" role="option" aria-selected="false" data-lang-option="ko" class="lang-option">
+                                    <span class="ko-font">한국어</span>
+                                    <i class="fas fa-check lang-check text-green-600 text-xs"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                     <!-- Mobile Menu Button -->
                     <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-white hover:bg-white/10">
                         <i class="fas fa-bars text-xl"></i>
@@ -188,9 +213,9 @@
                 <div class="grid md:grid-cols-2 gap-8 items-center">
                     <div class="space-y-6">
                         <p class="text-gray-700 text-lg leading-relaxed">
-                            <span data-lang-en>KD Employment Sole Co.,LTD is a licensed recruitment agency based in Vientiane, Laos, part of the KD Group founded in 2020. We specialize in connecting skilled Lao workers with reputable employers both within Laos and overseas, including dispatch to South Korea under the EPS and Seasonal Worker Program (SWP).</span>
-                            <span data-lang-lo class="lang-hidden">ບໍລິສັດ ເຄດີ ການຈັດຫາງານ ຈຳກັດຜູ້ດຽວ ເປັນບໍລິສັດຈັດຫາງານທີ່ໄດ້ຮັບອະນຸຍາດ ຕັ້ງຢູ່ນະຄອນຫຼວງວຽງຈັນ, ສປປ ລາວ ເປັນສ່ວນໜຶ່ງຂອງກຸ່ມບໍລິສັດ ເຄດີ ກຣຸບ ທີ່ສ້າງຕັ້ງຂຶ້ນໃນປີ 2020. ພວກເຮົາຊ່ຽວຊານດ້ານການເຊື່ອມຕໍ່ແຮງງານລາວທີ່ມີທັກສະກັບນາຍຈ້າງທີ່ມີຊື່ສຽງທັງພາຍໃນປະເທດ ແລະ ຕ່າງປະເທດ ລວມທັງການຈັດສົ່ງໄປ ສ.ເກົາຫຼີ ພາຍໃຕ້ລະບົບ EPS ແລະ ໂຄງການແຮງງານຕາມລະດູການ (SWP).</span>
-                        <span data-lang-ko class="lang-hidden">KD Employment Sole Co.,LTD는 라오스 비엔티안에 본사를 둔 공인 인력알선 회사이며, 2020년에 설립된 KD Group의 계열사입니다. 숙련된 라오스 근로자를 라오스 국내는 물론 해외의 신뢰할 수 있는 고용주와 연결하며, EPS 및 계절근로자 프로그램(SWP)을 통해 한국으로도 인력을 파견하고 있습니다.</span>
+                            <span data-lang-en>KD Employment Sole Co., LTD is an officially authorized employment agency and overseas manpower deployment company based in Vientiane, Laos. Founded in 2020, it operates as an affiliate of KD Group. The company connects skilled Lao workers with reliable employers both domestically and abroad. Furthermore, it dispatches workforce to South Korea through the Employment Permit System (EPS) and the Seasonal Worker Program (SWP).</span>
+                            <span data-lang-lo class="lang-hidden">ບໍລິສັດ ເຄດີ ການຈັດຫາງານ ຈຳກັດຜູ້ດຽວ (KD Employment Sole Co., LTD) ແມ່ນບໍລິສັດຈັດຫາແຮງງານ ແລະ ສົ່ງອອກແຮງງານໄປຕ່າງປະເທດທີ່ຖືກຕ້ອງຕາມກົດໝາຍ, ມີສຳນັກງານໃຫຍ່ຕັ້ງຢູ່ ນະຄອນຫຼວງວຽງຈັນ, ສປປ ລາວ. ບໍລິສັດແມ່ນສາຂາໃນເຄືອຂອງ KD Group ທີ່ສ້າງຕັ້ງຂຶ້ນໃນປີ 2020. ບໍລິສັດເຮັດໜ້າທີ່ເຊື່ອມໂຍງແຮງງານຝີມືຊາວລາວ ເຂົ້າກັບນາຍຈ້າງທີ່ມີຄວາມໜ້າເຊື່ອຖື ທັງຢູ່ພາຍໃນປະເທດ ແລະ ຕ່າງປະເທດ. ນອກຈາກນີ້, ຍັງໄດ້ສົ່ງອອກແຮງງານໄປ ປະເທດເກົາຫຼີ ຜ່ານລະບົບການຈ້າງງານ (EPS) ແລະ ໂຄງການແຮງງານຕາມລະດູການ (SWP) ອີກດ້ວຍ.</span>
+                        <span data-lang-ko class="lang-hidden">KD Employment Sole Co., LTD는 라오스 비엔티안에 본사를 둔 공인 라오스 인력알선 및 해외송출 회사이며, 2020년에 설립된 KD Group의 계열사입니다. 숙련된 라오스 근로자를 라오스 국내는 물론 해외의 신뢰할 수 있는 고용주와 연결하며, EPS 및 계절근로자 프로그램(SWP)을 통해 한국으로도 인력을 파견하고 있습니다.</span>
                         </p>
                         <p class="text-gray-700 text-lg leading-relaxed">
                             <span data-lang-en>Our mission is to provide transparent, ethical, and professional recruitment services that benefit both job seekers and employers in Laos.</span>
@@ -198,9 +223,9 @@
                         <span data-lang-ko class="lang-hidden">저희의 사명은 라오스의 구직자와 고용주 모두에게 도움이 되는 투명하고 윤리적이며 전문적인 인력알선 서비스를 제공하는 것입니다.</span>
                         </p>
                         <p class="text-gray-700 text-lg leading-relaxed">
-                            <span data-lang-en>KD Group was founded on January 1, 2020, starting out by importing quality Korean products such as Chumchurum soju, Nongshim (Shin Ramyun) noodles, and Yongrim doors. As the business grew, it expanded into three main lines: recruitment (KD Employment), import-export & logistics (KD Express), and white charcoal trading (KD White Charcoal). Looking ahead, KD Employment plans to expand worker dispatch to Thailand and Japan, and to build a Skills Development Center to train Lao workers to national and international standards.</span>
-                            <span data-lang-lo class="lang-hidden">ກຸ່ມບໍລິສັດ ເຄດີ ກຣຸບ ສ້າງຕັ້ງຂຶ້ນໃນວັນທີ 01 ມັງກອນ 2020, ເລີ່ມຕົ້ນຈາກການນຳເຂົ້າຜະລິດຕະພັນທີ່ມີຄຸນນະພາບຈາກ ສ.ເກົາຫຼີ ເຊັ່ນ ເຫຼົ້າໂຊຈູ Chumchurum, ໝີ່ເກົາຫຼີ Nongshim (Shin Ramyun) ແລະ ປະຕູ Yongrim. ເມື່ອທຸລະກິດຂະຫຍາຍຕົວ, ໄດ້ຂະຫຍາຍເປັນ 3 ຂະແໜງການຫຼັກ: ການຈັດຫາງານ (ເຄດີ ຈັດຫາງານ), ການຂາເຂົ້າ-ຂາອອກ ແລະ ການຂົນສົ່ງ (ເຄດີ ເອັກເພຣສ໌), ແລະ ການຄ້າຖ່ານຂາວ (ເຄດີ ຖ່ານຂາວ). ໃນອະນາຄົດ, ເຄດີ ຈັດຫາງານ ມີແຜນຂະຫຍາຍການຈັດສົ່ງແຮງງານໄປ ປະເທດໄທ ແລະ ປະເທດຍີ່ປຸ່ນ, ພ້ອມທັງສ້າງສູນພັດທະນາສີມືແຮງງານ ເພື່ອຝຶກອົບຮົມແຮງງານລາວໃຫ້ໄດ້ມາດຕະຖານພາຍໃນ ແລະ ສາກົນ.</span>
-                        <span data-lang-ko class="lang-hidden">KD Group은 2020년 1월 1일에 설립되어, 처음순(Chumchurum) 소주, 농심 신라면, 영림 도어 등 우수한 한국 제품을 수입하며 시작했습니다. 사업이 성장하면서 인력알선(KD Employment), 수출입·물류(KD Express), 백탄 거래(KD White Charcoal)의 3개 핵심 분야로 확장했습니다. 앞으로 KD Employment는 태국과 일본으로 인력 파견을 확대하고, 라오스 근로자를 국내외 표준에 맞게 훈련시킬 기술개발센터를 설립할 계획입니다.</span>
+                            <span data-lang-en>KD Group was established on January 1, 2020, starting with the importation of premium Korean products such as Lotte Chumchurum Soju, Nongshim Ramyeon, and Younglim Doors. Due to business growth, the group expanded into three core sectors: Manpower &amp; Employment (KD Employment), Import-Export &amp; Logistics (KD Express), and Binchotan / White Charcoal Trading (KD White Charcoal). Moving forward, KD Employment — which currently sends workers to South Korea and Thailand — plans to expand its manpower deployment to Japan and other countries. Additionally, it plans to establish a foundation and Skill Development Center to train Lao workers in accordance with domestic and international standards.</span>
+                            <span data-lang-lo class="lang-hidden">ກຸ່ມບໍລິສັດ KD Group ໄດ້ຮັບການສ້າງຕັ້ງຂຶ້ນໃນວັນທີ 1 ມັງກອນ 2020 ໂດຍເລີ່ມຕົ້ນຈາກການນຳເຂົ້າຜະລິດຕະພັນຄຸນນະພາບດີຈາກເກົາຫຼີ ເຊັ່ນ: ເຫຼົ້າໂຊຈູ ເຊິມຊໍຣອມ (Chumchurum) ຈາກ Lotte, ໝີ່ກ່ອງ Nongshim, ແລະ ປະຕູ Younglim. ຍ້ອນການຂະຫຍາຍຕົວຂອງທຸລະກິດ, ບໍລິສັດໄດ້ຂະຫຍາຍຂົງເຂດການດຳເນີນງານອອກເປັນ 3 ຂະແໜງຫຼັກ: ການສະໜອງ ແລະ ສົ່ງອອກແຮງງານ (KD Employment), ການນຳເຂົ້າ-ສົ່ງອອກ ແລະ ໂລຈິສຕິກ (KD Express), ແລະ ການຄ້າຖ່ານຂາວ / ຖ່ານບີໂຊຕັນ (KD White Charcoal). ໃນອະນາຄົດ, KD Employment ທີ່ປັດຈຸບັນກຳລັງສົ່ງອອກແຮງງານໄປ ເກົາຫຼີ ແລະ ໄທ ມີແຜນຈະຂະຫຍາຍການສົ່ງອອກແຮງງານໄປ ຍີ່ປຸ່ນ ແລະ ປະເທດອື່ນໆ ຕື່ມອີກ. ພ້ອມທັງມີແຜນສ້າງຕັ້ງມູນນິທິ / ສູນພັດທະນາຝີມືແຮງງານ ເພື່ອຝຶກອົບຮົມແຮງງານລາວໃຫ້ໄດ້ມາດຕະຖານທັງພາຍໃນ ແລະ ສາກົນ.</span>
+                        <span data-lang-ko class="lang-hidden">KD Group은 2020년 1월 1일에 설립되어, 롯데주류 처음처럼(Chumchurum) 소주, 농심 라면, 영림 도어 등 우수한 한국 제품을 수입하며 시작했습니다. 사업 번창으로 인력송출(KD Employment), 수출입·물류(KD Express), 비장탄 거래(KD White Charcoal)의 3개 핵심 분야로 확장했습니다. KD Employment는 현재 한국과 태국으로 인력을 송출하고 있으며, 앞으로 일본 및 기타 국가로 파견을 확대하고, 라오스 근로자를 국내외 표준에 맞게 훈련시킬 기술개발센터를 설립할 계획입니다.</span>
                         </p>
                         <div class="bg-green-50 border-l-4 border-green-600 p-4 rounded">
                             <p class="text-sm text-gray-700">
@@ -813,7 +838,7 @@
     </button>
     <div id="action-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-4 py-3 rounded-lg shadow-xl opacity-0 pointer-events-none transition text-sm font-medium z-50"></div>
 
-    <script src="script.js?v=2026-07-27"></script>
+    <script src="script.js?v=2026-07-30"></script>
 </body>
 </html>
 

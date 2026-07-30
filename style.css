@@ -61,6 +61,46 @@
         .lang-hidden {
             display: none;
         }
+
+        /* Language dropdown. The menu itself is positioned with Tailwind utilities in the
+           markup; these rules cover the row states Tailwind can't express on aria-selected. */
+        #lang-menu {
+            /* The header is z-50; keep the menu above the hero that follows it. */
+            z-index: 60;
+        }
+        #lang-caret {
+            transition: transform 0.2s ease;
+        }
+        #lang-toggle[aria-expanded="true"] #lang-caret {
+            transform: rotate(180deg);
+        }
+        .lang-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.5rem 0.875rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            text-align: left;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .lang-option:hover {
+            background-color: #f0fdf4;
+            color: var(--dark-green);
+        }
+        .lang-option[aria-selected="true"] {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+        }
+        .lang-option .lang-check {
+            visibility: hidden;
+        }
+        .lang-option[aria-selected="true"] .lang-check {
+            visibility: visible;
+        }
         .flag-card {
             transition: all 0.3s ease;
         }

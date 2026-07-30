@@ -1,30 +1,75 @@
-// Language Toggle
+// Language Dropdown
         const languages = ['en', 'lo', 'ko'];
         const languageLabels = { en: 'EN', lo: 'ລາວ', ko: '한국어' };
-        let currentLangIndex = 0;
-        let currentLang = languages[currentLangIndex];
+        let currentLang = 'en';
+        const langDropdown = document.getElementById('lang-dropdown');
         const langToggle = document.getElementById('lang-toggle');
         const langText = document.getElementById('lang-text');
+        const langMenu = document.getElementById('lang-menu');
+        const langOptions = Array.from(document.querySelectorAll('[data-lang-option]'));
 
-        function applyLanguage() {
-            currentLang = languages[currentLangIndex];
-            const nextLang = languages[(currentLangIndex + 1) % languages.length];
-            langText.textContent = languageLabels[nextLang];
+        function applyLanguage(lang) {
+            currentLang = languages.includes(lang) ? lang : languages[0];
+            langText.textContent = languageLabels[currentLang];
             document.documentElement.lang = currentLang;
 
-            languages.forEach(lang => {
-                document.querySelectorAll(`[data-lang-${lang}]`).forEach(el => {
-                    el.classList.toggle('lang-hidden', lang !== currentLang);
+            languages.forEach(code => {
+                document.querySelectorAll(`[data-lang-${code}]`).forEach(el => {
+                    el.classList.toggle('lang-hidden', code !== currentLang);
                 });
+            });
+
+            // Drives the check mark in the menu, see .lang-option[aria-selected] in style.css.
+            langOptions.forEach(option => {
+                option.setAttribute('aria-selected', option.dataset.langOption === currentLang ? 'true' : 'false');
             });
         }
 
+        function isLangMenuOpen() {
+            return !langMenu.classList.contains('hidden');
+        }
+
+        function closeLangMenu() {
+            langMenu.classList.add('hidden');
+            langToggle.setAttribute('aria-expanded', 'false');
+        }
+
+        function openLangMenu() {
+            langMenu.classList.remove('hidden');
+            langToggle.setAttribute('aria-expanded', 'true');
+        }
+
         langToggle.addEventListener('click', () => {
-            currentLangIndex = (currentLangIndex + 1) % languages.length;
-            applyLanguage();
+            if (isLangMenuOpen()) {
+                closeLangMenu();
+            } else {
+                openLangMenu();
+            }
         });
 
-        applyLanguage();
+        langOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                applyLanguage(option.dataset.langOption);
+                closeLangMenu();
+                langToggle.focus();
+            });
+        });
+
+        // Close the menu when tapping outside it. The toggle has its own handler above,
+        // so ignore anything inside the dropdown here or the two would cancel out.
+        document.addEventListener('click', event => {
+            if (!isLangMenuOpen()) return;
+            if (langDropdown.contains(event.target)) return;
+            closeLangMenu();
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key !== 'Escape' || !isLangMenuOpen()) return;
+            closeLangMenu();
+            langToggle.focus();
+        });
+
+        applyLanguage(currentLang);
 
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
